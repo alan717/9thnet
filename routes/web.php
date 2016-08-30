@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('front.index');
 });
+
+Route::resource('posts','PostController');
+
+Auth::routes();
+
+Route::get('/admin', 'HomeController@index');
