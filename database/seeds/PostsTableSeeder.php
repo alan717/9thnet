@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
     {
         \App\Post::create([
             'title' => '不安全的wifi',
-            'cover' => '/upload/wifi.jpg',
+            'cover' => '/storage/upload/wifi.jpg',
             'content' => <<<_HEREDOC
 <p>作者：贺钧威（图片较多请耐心等待）</p>
 <br>
@@ -22,52 +22,52 @@ class PostsTableSeeder extends Seeder
 随着路由器的普遍，家家户户都有wifi，往往大家只知道输入密码连接，而细心点的人会发现当下的路由器后边都有个pin码，只要你输入和路由器pin码一样的数字使用wps也可以连接上去，这就是把双刃剑了，虽然密码花样百出但是pin码……呵呵,另一种办法是靠些软件跑字典跑出相匹配的密码。写这篇文章希望大家提高网络安全意识，而不是去偷邻居家的网（还不如厚着脸皮去问）
 黑客不会手动一个一个去尝试，而是利用一个自动化的工具，下面讲解怎么做这样的工具：<br>
 1.插上一个U盘，打开UItraIOS（试用就好）<a href="UltraISO_xp510.rar"><em>UItraIOS下载地址</em></a>在本地目录中找到镜像所在文件夹并打开镜像（所谓镜像指的是.iso文件）<a href="CDlinux0.9.6.1_SSE中文.iso"><em>CDlinux的镜像下载</em></a>之后在启动里写入，选中你的U盘点击写入就好（会被格式化，所以U盘里不要放东西）。
-<img src="/upload/1.png">
-<img src="/upload/2.png">
+<img src="/storage/upload/1.png">
+<img src="/storage/upload/2.png">
 <br>
 初步就完成了。
 <br>
 2.打开Grub4Dos（<a href="grub4dos-0.4.4.zip"><em>Grub4Dos下载</em></a>）选中磁盘和你的U盘（下拉菜单里可以看存储空间的大小来辨别你的U盘），
 选中不保存原来的MBR，启动时不搜索软盘，不引导原来的MBR，点安装，弹出了黑框提示successfully按回车就行。
-<img src="/upload/3.png"><img src="/upload/4.png">
+<img src="/storage/upload/3.png"><img src="/storage/upload/4.png">
 <br>
 3.将这四个文件放在U盘根目录下。（menu.lst/grub.exe/grldr/splash，<a href="wifi.rar"><em>下载后解压</em></a>）
 你的U盘下现在应该是这个样子，共有六个文件，这样启动U盘就做成了。
-<img src="/upload/5.png">
+<img src="/storage/upload/5.png">
 <br>
 最后就是设置开机启动项，这个在装系统的时候会经常用到，会装系统的一般都懂怎么设置开机启动，一般笔记本在开机一瞬间按F12能打开快速启动项，选中你的U盘按回车，进入一个选择语言的画面，建议大家选择繁体中文，简体的貌似有问题，进入U盘启动的系统后，PIN或抓包跑字典，具体如下：
 <br>
-1，打开水滴。<img src="/upload/6.jpg">
+1，打开水滴。<img src="/storage/upload/6.jpg">
 <br>
-2.  <img src="/upload/7.jpg">     
+2.  <img src="/storage/upload/7.jpg">     
 <br>
      左边无线网卡，显示出你的无线网卡的名字，就可以点右边的扫描了，等扫描结束，然后看中间看见有wps的，就是能pin的，选择一个，点击下面的Reaver，就开始破解了（这个属于PIN破解法，要点如下：3-10 seconds/pin一般几个小时就能出密码了,有防pin的路由器会等待300秒，这种方法就不可行了。<br>
-<img src="/upload/8.jpg">
-<img src="/upload/9.jpg">
+<img src="/storage/upload/8.jpg">
+<img src="/storage/upload/9.jpg">
 <br>出密码是这样子的：<br>
-<img src="/upload/10.jpg">
+<img src="/storage/upload/10.jpg">
          <br>另一种方法是抓取数据包暴力猜解（跑字典）。<br>
- <img src="/upload/11.jpg">
+ <img src="/storage/upload/11.jpg">
 没有客户端的不能抓包
 点击启动开始抓包。
-<img src="/upload/12.jpg">
-<img src="/upload/13.jpg">
-<img src="/upload/14.jpg">
+<img src="/storage/upload/12.jpg">
+<img src="/storage/upload/13.jpg">
+<img src="/storage/upload/14.jpg">
 <br>抓到了！ 强烈推荐你不要自己跑，要跑也回WINDOWS跑。<br>
-<img src="/upload/15.jpg">
+<img src="/storage/upload/15.jpg">
 <br>不建议自己跑，可以在淘宝找店家跑，也不是很贵，15元  0.0
  
-<img src="/upload/16.jpg">
+<img src="/storage/upload/16.jpg">
   <br>这是跑出密码的样子。
 
 <br>如果你点了否，那么就会出现如下：
-<img src="/upload/17.jpg">
-<img src="/upload/18.jpg">   
+<img src="/storage/upload/17.jpg">
+<img src="/storage/upload/18.jpg">   
 
          
 <br>这是选择要拷贝的文件别看错了，下面才是要存放的目录。
-<img src="/upload/19.jpg">      
-<img src="/upload/20.jpg">
+<img src="/storage/upload/19.jpg">      
+<img src="/storage/upload/20.jpg">
 
 <br>至此，握手包已经到手。
 
@@ -82,7 +82,7 @@ _HEREDOC
 
         \App\Post::create([
             'title' => '社会工程学',
-            'cover' => '/upload/social.png',
+            'cover' => '/storage/upload/social.png',
             'content' => <<<_HEREDOC
 <p>作者：贺钧威</p>
 <br>
@@ -104,7 +104,7 @@ _HEREDOC
 
         \App\Post::create([
             'title' => 'windows系统安装',
-            'cover' => '/upload/windows.jpg',
+            'cover' => '/storage/upload/windows.jpg',
             'content' => <<<_HEREDOC
 <p>作者：董威</p>
 <br>

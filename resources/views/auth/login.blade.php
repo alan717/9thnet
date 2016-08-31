@@ -48,24 +48,37 @@
         </h3>
         <form action="/login" method="post" class="form" id="login_form" novalidate>
             {{ csrf_field() }}
-            <div class="form-group">
-                <label for="username"><i class="fa fa-user" aria-hidden="true"></i> email</label>
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                <label for="email"><i class="fa fa-user" aria-hidden="true"></i> email</label>
                 <input type="email" name="email"
                        required
                        data-rule-minlength="6"
                        data-rule-maxlength="20"
                        data-msg-required="请填写email"
                        class="form-control" id="login-username"
-                       placeholder="Enter username">
+                       placeholder="Enter email"
+                       value="{{ old('email') }}">
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                @endif
             </div>
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                 <label for="password"><i class="fa fa-lock" aria-hidden="true"></i> 密码</label>
                 <input type="password" name="password" required
                        data-rule-minlength="4"
                        data-rule-maxlength="40"
                        data-msg-required="请填写密码"
-                       class="form-control" id="login_password" placeholder="Enter password">
+                       class="form-control" id="login_password" placeholder="Enter password"
+                       value="{{ old('password') }}">
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                @endif
             </div>
+
             <div class="form-group">
                 <div class="checkbox">
                     <label>

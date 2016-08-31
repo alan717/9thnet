@@ -11,8 +11,21 @@
 
     <!-- Bootstrap -->
     <link href="/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/css/font-awesome.min.css" rel="stylesheet">
     <link href="/vendor/css/sweetalert.css" rel="stylesheet">
     <link href="/css/admin/app.css" rel="stylesheet">
+
+
+
+    <script src="/vendor/js/jquery.min.js"></script>
+    <script src="/vendor/js/jquery.pjax.min.js"></script>
+    <script src="/vendor/js/sweetalert.min.js"></script>
+    <script src="/vendor/js/bootstrap.min.js"></script>
+    <script src="/vendor/js/topbar.min.js"></script>
+    <script src="/vendor/js/jquery.validate.min.js"></script>
+    <script src="/vendor/js/messages_zh.min.js"></script>
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <script src="/js/admin/app.js"></script>
 </head>
 <body>
 <nav class="nav navbar-default navbar-fixed-top" role="navigation" style="padding:0 20px 0 0;">
@@ -32,12 +45,20 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown"><a href="#" data-toggle="dropdown" id="name">{{ auth()->user()->name }} <span
                                 class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{ Auth::logout() }}"><i class="fa fa-btn fa-sign-out"></i>退出
+                            <a href="{{ url('/logout') }}"
+                               onclick="event.preventDefault();
+                                                 document.getElementById ('logout-form').submit();">
+                                Logout
                             </a>
+
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     </ul>
+
                 </li>
             </ul>
         </div>
@@ -50,68 +71,26 @@
     <div style="height: 50px;"></div>
     <div class="site-nav-left scrollable-container">
         <div class="list-group">
-            <a href="/admin" class="list-group-item active"
+            <a href="/" target="_blank" class="list-group-item"
                data-toggle="tooltip"
                data-placement="right"
                title="仪表盘">
                 <i class="fa fa-dashboard"></i>
-                <span class="text">仪表盘</span>
+                <span class="text">查看首页</span>
                 <span class="glyphicon glyphicon-triangle-left"></span>
             </a>
-        </div>
-
-        <div class="list-group">
-            <a href="javascript:void(0);"
-               class="list-group-item list-group-item-header collapsed"
-               data-toggle="collapse"
-               data-target="#report_sidebar_nav_collapse">
-                <span class="text">文章管理</span>
-                <i class="fa fa-caret-down" id="caret"></i>
+            <a href="/admin/posts" class="list-group-item member"
+               data-toggle="tooltip"
+               data-placement="right">
+                <span class="text">文章列表</span>
+                <span class="glyphicon glyphicon-triangle-left"></span>
             </a>
-
-            <div class="list-group site-nav-left-container collapse collapsed"
-                 id="report_sidebar_nav_collapse">
-
-                <a href="/posts" class="list-group-item member"
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">文章列表</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
-                <a href="/posts/create" class="list-group-item member"
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">新增文章</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
-            </div>
-        </div>
-
-        <div class="list-group">
-            <a href="javascript:void(0);"
-               class="list-group-item list-group-item-header collapsed"
-               data-toggle="collapse"
-               data-target="#weibo_sidebar_nav_collapse">
-                <span class="text">权限管理</span>
-                <i class="fa fa-caret-down" id="caret"></i>
+            <a href="/admin/posts/create" class="list-group-item weibo"
+               data-toggle="tooltip"
+               data-placement="right">
+                <span class="text">新增文章</span>
+                <span class="glyphicon glyphicon-triangle-left"></span>
             </a>
-
-            <div class="list-group site-nav-left-container collapse collapsed"
-                 id="weibo_sidebar_nav_collapse">
-
-                <a href="/admin/2/show" class="list-group-item weibo"
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">用户管理</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
-                <a href="#" class="list-group-item weibo"
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">角色管理</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
-            </div>
         </div>
 
         <div class="btn-toggle-site-nav-left text-center" id="btn_toggle_site_nav_left_wrap_style">
@@ -126,16 +105,11 @@
 <div class="main" id="main_container">
     @yield('content')
 </div>
-
-
-<script src="/vendor/js/jquery.min.js"></script>
-<script src="/vendor/js/jquery.pjax.min.js"></script>
-<script src="/vendor/js/sweetalert.min.js"></script>
-<script src="/vendor/js/bootstrap.min.js"></script>
-<script src="/vendor/js/topbar.min.js"></script>
-<script src="/vendor/js/jquery.validate.min.js"></script>
-<script src="/vendor/js/messages_zh.min.js"></script>
-<script src="/js/admin/app.js"></script>
-
+<script>
+    // 全局 ajax 表单提交使用的 csrf token
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"}
+    });
+</script>
 </body>
 </html>

@@ -9,6 +9,14 @@ use App\Http\Requests;
 
 class PostController extends Controller
 {
+
+    protected $post = null;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -84,6 +92,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
