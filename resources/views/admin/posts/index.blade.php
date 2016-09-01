@@ -35,7 +35,7 @@
                         </a>
 
                         <button class="btn btn-danger btn-xs btn-delete"
-                                data-url="/posts/{{ $post->id }}">
+                                data-url="/admin/posts/{{ $post->id }}">
                             <i class="fa fa-trash fa-fw"></i>
                             删除
                         </button>
