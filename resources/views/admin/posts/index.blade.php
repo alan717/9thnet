@@ -50,12 +50,12 @@
         $('.btn-delete').on('click', function () {
             var $that = $(this);
             swal({
-                        title: "Are you sure?",
-                        text: "Your will not be able to recover this imaginary file!",
+                        title: "是否删除?",
+                        text: "此操作不可逆!",
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonClass: "btn-danger",
-                        confirmButtonText: "Yes, delete it!",
+                        confirmButtonText: "是,删除它!",
                         closeOnConfirm: false
                     },
                     function () {

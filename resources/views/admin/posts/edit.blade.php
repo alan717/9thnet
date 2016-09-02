@@ -3,14 +3,14 @@
     <div class="container">
         <div class="page-header">
             <h2>
-                新增文章
+                编辑文章
             </h2>
         </div>
         <form action="/admin/posts" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group {{ $errors->has('title') ? 'has-error': ''}}" style="max-width: 400px">
                 <label for="title">标题</label>
-                <input class="form-control" id="title" type="text" required name="title" value="{{ old('title') }}">
+                <input class="form-control" id="title" type="text" required name="title" value="{{ old('title',$post->title) }}">
                 @if ($errors->has('title'))
                     <span class="help-block">
                             <strong>{{ $errors->first('title') }}</strong>
@@ -18,8 +18,9 @@
                 @endif
             </div>
             <div class="form-group {{ $errors->has('cover') ? 'has-error': ''}}" style="max-width: 300px">
-                <label for="cover">封面</label><span class="text-muted"> (建议350*450)</span>
+                <label for="cover">封面</label>
                 <input class="form-control" id="cover" type="file" required name="cover">
+                <img src="{{ $post->cover }}" alt="封面">
                 @if ($errors->has('cover'))
                     <span class="help-block">
                             <strong>{{ $errors->first('cover') }}</strong>
@@ -28,7 +29,7 @@
             </div>
             <div class="form-group {{ $errors->has('content') ? 'has-error': ''}}">
                 <label for="summernote">内容</label>
-                <div class="form-control" id="summernote" required></div>
+                <div class="form-control" id="summernote" required>{!! $post->content !!}</div>
                 <textarea name="content" id="content" hidden></textarea>
                 @if ($errors->has('content'))
                     <span class="help-block">

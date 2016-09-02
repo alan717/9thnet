@@ -167,7 +167,8 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Intervention\Image\ImageServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
 
         /*
          * Application Service Providers...

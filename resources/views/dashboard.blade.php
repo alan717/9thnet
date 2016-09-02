@@ -9,10 +9,13 @@
         9thnet
     </title>
 
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
     <!-- Bootstrap -->
     <link href="/vendor/css/bootstrap.min.css" rel="stylesheet">
     <link href="/vendor/css/font-awesome.min.css" rel="stylesheet">
     <link href="/vendor/css/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/css/summernote.css">
     <link href="/css/admin/app.css" rel="stylesheet">
 
 
@@ -24,8 +27,9 @@
     <script src="/vendor/js/topbar.min.js"></script>
     <script src="/vendor/js/jquery.validate.min.js"></script>
     <script src="/vendor/js/messages_zh.min.js"></script>
-    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <script src="/vendor/js/summernote.min.js"></script>
     <script src="/js/admin/app.js"></script>
+
 </head>
 <body>
 <nav class="nav navbar-default navbar-fixed-top" role="navigation" style="padding:0 20px 0 0;">
@@ -71,26 +75,70 @@
     <div style="height: 50px;"></div>
     <div class="site-nav-left scrollable-container">
         <div class="list-group">
-            <a href="/" target="_blank" class="list-group-item"
+            <a href="/admin" class="list-group-item active"
                data-toggle="tooltip"
                data-placement="right"
                title="仪表盘">
                 <i class="fa fa-dashboard"></i>
-                <span class="text">查看首页</span>
+                <span class="text">仪表盘</span>
                 <span class="glyphicon glyphicon-triangle-left"></span>
             </a>
-            <a href="/admin/posts" class="list-group-item member"
-               data-toggle="tooltip"
-               data-placement="right">
-                <span class="text">文章列表</span>
-                <span class="glyphicon glyphicon-triangle-left"></span>
+        </div>
+
+        <div class="list-group">
+            <a href="javascript:void(0);"
+               class="list-group-item list-group-item-header collapsed"
+               data-toggle="collapse"
+               data-target="#report_sidebar_nav_collapse">
+                <span class="text">文章管理</span>
+                <i class="fa fa-caret-down" id="caret"></i>
             </a>
-            <a href="/admin/posts/create" class="list-group-item weibo"
-               data-toggle="tooltip"
-               data-placement="right">
-                <span class="text">新增文章</span>
-                <span class="glyphicon glyphicon-triangle-left"></span>
+
+            <div class="list-group site-nav-left-container collapse collapsed"
+                 id="report_sidebar_nav_collapse">
+
+                <a href="/admin/posts" class="list-group-item member"
+                   data-pjax
+                   data-toggle="tooltip"
+                   data-placement="right">
+                    <span class="text">文章列表</span>
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                </a>
+                <a href="/admin/posts/create" class="list-group-item member"
+                   data-pjax
+                   data-toggle="tooltip"
+                   data-placement="right">
+                    <span class="text">新增文章</span>
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="list-group">
+            <a href="javascript:void(0);"
+               class="list-group-item list-group-item-header collapsed"
+               data-toggle="collapse"
+               data-target="#weibo_sidebar_nav_collapse">
+                <span class="text">权限管理</span>
+                <i class="fa fa-caret-down" id="caret"></i>
             </a>
+
+            <div class="list-group site-nav-left-container collapse collapsed"
+                 id="weibo_sidebar_nav_collapse">
+
+                <a href="/admin/users" class="list-group-item weibo"
+                   data-toggle="tooltip"
+                   data-placement="right">
+                    <span class="text">管理员列表</span>
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                </a>
+                <a href="#" class="list-group-item weibo"
+                   data-toggle="tooltip"
+                   data-placement="right">
+                    <span class="text">新增管理员</span>
+                    <span class="glyphicon glyphicon-triangle-left"></span>
+                </a>
+            </div>
         </div>
 
         <div class="btn-toggle-site-nav-left text-center" id="btn_toggle_site_nav_left_wrap_style">

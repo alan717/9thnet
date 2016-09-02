@@ -11,7 +11,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Post::create([
+        \App\Models\Post::create([
             'title' => '不安全的wifi',
             'cover' => '/storage/upload/wifi.jpg',
             'content' => <<<_HEREDOC
@@ -80,7 +80,7 @@ class PostsTableSeeder extends Seeder
 _HEREDOC
         ]);
 
-        \App\Post::create([
+        \App\Models\Post::create([
             'title' => '社会工程学',
             'cover' => '/storage/upload/social.png',
             'content' => <<<_HEREDOC
@@ -102,7 +102,7 @@ _HEREDOC
 _HEREDOC
         ]);
 
-        \App\Post::create([
+        \App\Models\Post::create([
             'title' => 'windows系统安装',
             'cover' => '/storage/upload/windows.jpg',
             'content' => <<<_HEREDOC

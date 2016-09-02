@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::create([
+        \App\Models\User::create([
             'name' => '第九网络组超级管理员',
             'email' => '9thnet@9thnet.com',
             'password' => bcrypt('the9network'),

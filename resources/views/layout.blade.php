@@ -32,7 +32,6 @@
     <script src="/vendor/js/jquery.mCustomScrollbar.min.js"></script>
     <script src="/vendor/js/jquery.mousewheel-3.0.6.min.js"></script>
     <script src="/vendor/js/jquery.emoji.min.js"></script>
-    <script src="/js/front/app.js"></script>
 </head>
 <body>
 @include('partials.header')

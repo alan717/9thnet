@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Post;
+use App\Models\Post;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,15 +48,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-            $cover = '/storage/'.$request->cover->store('/upload');
-
+            $cover = '/storage/' . $request->cover->store('/upload');
+            Image::make(public_path().$cover)->resize(350,450)->save();
             $this->validate($request, [
                 'title'   => 'required|max:255',
                 'cover'   => 'required',
                 'content' => 'required|max:255',
             ]);
-            $this->post->create(array_replace($request->all(),['cover'=>$cover]));
-            return redirect('/posts');
+            $post = $this->post->create([
+                'title'   => $request->title,
+                'cover'   => $cover,
+                'content' => $request->input('content'),
+            ]);
+            return redirect('/posts/'.$post->id);
         }
         return back()->withInput()->withErrors([
             'general' => '请上传封面图片',
@@ -81,7 +86,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        if($post = $this->post->find($id)){
+            return view('admin.posts.edit',['post'=>$post]);
+        }else{
+            abort(404);
+        }
     }
 
     /**

@@ -15,9 +15,17 @@ Route::get('/', function () {
     return view('front.index');
 });
 
-Route::resource('posts','PostController');
+Route::resource('posts', 'PostController');
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index');
-Route::resource('admin/posts','Admin\PostController');
+Route::group([
+    'middleware' => ['auth', 'pjax'],
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+], function () {
+    Route::get('/', 'HomeController@index');
+    Route::post('/upload', 'HomeController@upload');
+    Route::resource('/posts', 'PostController');
+});
+
