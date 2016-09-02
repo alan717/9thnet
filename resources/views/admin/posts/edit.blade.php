@@ -6,8 +6,9 @@
                 编辑文章
             </h2>
         </div>
-        <form action="/admin/posts" method="post" enctype="multipart/form-data">
+        <form action="/admin/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
+            {{ method_field('PUT') }}
             <div class="form-group {{ $errors->has('title') ? 'has-error': ''}}" style="max-width: 400px">
                 <label for="title">标题</label>
                 <input class="form-control" id="title" type="text" required name="title" value="{{ old('title',$post->title) }}">
@@ -19,7 +20,7 @@
             </div>
             <div class="form-group {{ $errors->has('cover') ? 'has-error': ''}}" style="max-width: 300px">
                 <label for="cover">封面</label>
-                <input class="form-control" id="cover" type="file" required name="cover">
+                <input class="form-control" id="cover" type="file" name="cover">
                 <img src="{{ $post->cover }}" alt="封面">
                 @if ($errors->has('cover'))
                     <span class="help-block">
@@ -37,6 +38,11 @@
                         </span>
                 @endif
             </div>
+            @if($errors->has('general'))
+                <span class="help-block">
+                            <strong>{{ $errors->first('general') }}</strong>
+                        </span>
+            @endif
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" id="submitBtn">
                     新增
