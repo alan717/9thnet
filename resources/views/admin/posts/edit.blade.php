@@ -11,7 +11,8 @@
             {{ method_field('PUT') }}
             <div class="form-group {{ $errors->has('title') ? 'has-error': ''}}" style="max-width: 400px">
                 <label for="title">标题</label>
-                <input class="form-control" id="title" type="text" required name="title" value="{{ old('title',$post->title) }}">
+                <input class="form-control" id="title" type="text" required name="title"
+                       value="{{ old('title',$post->title) }}">
                 @if ($errors->has('title'))
                     <span class="help-block">
                             <strong>{{ $errors->first('title') }}</strong>
@@ -81,7 +82,6 @@
             $('#submitBtn').click(function () {
                 $('#content').val(summernote.summernote('code'));
             });
-
         });
     </script>
 @endsection

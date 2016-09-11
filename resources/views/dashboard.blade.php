@@ -127,12 +127,14 @@
                  id="weibo_sidebar_nav_collapse">
 
                 <a href="/admin/users" class="list-group-item weibo"
+                   data-pjax
                    data-toggle="tooltip"
                    data-placement="right">
                     <span class="text">管理员列表</span>
                     <span class="glyphicon glyphicon-triangle-left"></span>
                 </a>
-                <a href="#" class="list-group-item weibo"
+                <a href="/admin/users/create" class="list-group-item weibo"
+                   data-pjax
                    data-toggle="tooltip"
                    data-placement="right">
                     <span class="text">新增管理员</span>

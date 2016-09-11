@@ -21,11 +21,14 @@ Auth::routes();
 
 Route::group([
     'middleware' => ['auth', 'pjax'],
-    'prefix' => 'admin',
-    'namespace' => 'Admin',
+    'prefix'     => 'admin',
+    'namespace'  => 'Admin',
 ], function () {
     Route::get('/', 'HomeController@index');
     Route::post('/upload', 'HomeController@upload');
+    Route::get('/users', 'HomeController@users');
+    Route::get('/users/create', 'HomeController@create');
+
     Route::resource('/posts', 'PostController');
 });
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,13 +34,24 @@ class HomeController extends Controller
         return view('admin.home');
     }
 
+    public function users()
+    {
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
     public function upload(Request $request)
     {
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $path = '/storage/' . $request->file('file')->store('/upload');
-            return response($path,200);
-        }else{
-            return response('没有发送文件',404);
+            return response($path, 200);
+        } else {
+            return response('没有发送文件', 404);
         }
     }
 
