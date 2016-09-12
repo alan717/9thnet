@@ -4,4 +4,5 @@
 }
 .carousel-inner .item img {
 	width: 100%;
+	min-height: 270px;
 }

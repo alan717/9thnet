@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('front.index');
 });
 
+Route::get('/test', function () {
+    dd(App\Models\Post::search('windows')->get());
+});
+
 Route::resource('posts', 'PostController');
 
 Auth::routes();
