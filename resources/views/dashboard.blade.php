@@ -17,7 +17,7 @@
     <link href="/vendor/css/sweetalert.css" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/css/summernote.css">
     <link href="/css/admin/app.css" rel="stylesheet">
-
+    @yield('css')
 
 
     <script src="/vendor/js/jquery.min.js"></script>

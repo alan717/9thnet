@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ $post->content }}</td>
+                    <td class="posts-content">{{ $post->content }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>{{ $post->updated_at }}</td>
                     <td class="text-center">
@@ -72,4 +72,8 @@
                     });
         })
     </script>
+@endsection
+
+@section('css')
+    <link href="/css/admin/posts.css" rel="stylesheet">
 @endsection

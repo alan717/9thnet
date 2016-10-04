@@ -49,7 +49,7 @@
         <form action="/login" method="post" class="form" id="login_form" novalidate>
             {{ csrf_field() }}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                <label for="email"><i class="fa fa-user" aria-hidden="true"></i> email</label>
+                <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> email</label>
                 <input type="email" name="email"
                        required
                        data-rule-minlength="6"
