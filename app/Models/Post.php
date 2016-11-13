@@ -8,12 +8,12 @@ use Laravel\Scout\Searchable;
 class Post extends Model
 {
 
-    use Searchable;
+//    use Searchable;
 
-    public function searchableAs()
-    {
-        return 'posts_index';
-    }
+//  public function searchableAs()
+//    {
+//        return 'posts_index';
+//    }
 
     /**
      * The attributes that are mass assignable.

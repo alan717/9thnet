@@ -38,7 +38,7 @@
                         {{-- this field got submitted to the server along with other form data --}}
                         <input id="email" type="email" class="form-control hidden" name="email"
                                value="{{ $email or old('email') }}">
-
+                        <input type="text" class="hidden" name="token" value="{{ $token or old('token') }}">
                         {{-- disabled field is not submitted; this one is just for the view --}}
                         <input type="email" class="form-control" value="{{ $email or old('email') }}" disabled>
 
