@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('admin.dashboard')
 @section('content')
     <div class="container">
         <div class="page-header">

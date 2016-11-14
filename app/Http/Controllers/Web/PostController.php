@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller as Controller;
 
 class PostController extends Controller
 {
@@ -25,7 +26,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index',['posts'=>$posts]);
+        return view('web.posts.index',['posts'=>$posts]);
     }
 
     /**

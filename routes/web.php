@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/', function () {
+        return view('web.index');
+    });
+
+    Route::resource('posts', 'PostController');
 });
 
 Route::get('/test', function () {
@@ -24,15 +31,15 @@ Route::get('/test', function () {
     \Mail::to($data['to'])->send(new \App\Mail\UserMailer($data));
 });
 
-Route::resource('posts', 'PostController');
-
-Auth::routes();
 
 Route::group([
-    'middleware' => ['auth', 'pjax'],
+    'middleware' => ['pjax'],
     'prefix'     => 'admin',
     'namespace'  => 'Admin',
 ], function () {
+
+    Auth::routes();
+
     Route::get('/', 'HomeController@index');
     Route::post('/upload', 'HomeController@upload');
     Route::get('/users', 'HomeController@users');
@@ -40,8 +47,3 @@ Route::group([
 
     Route::resource('/posts', 'PostController');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');

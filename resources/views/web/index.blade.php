@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('web.layout')
 
 @section('css')
     <link href="/css/front/index.css" rel="stylesheet">

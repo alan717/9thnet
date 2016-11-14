@@ -34,12 +34,12 @@
     <script src="/vendor/js/jquery.emoji.min.js"></script>
 </head>
 <body>
-@include('partials.header')
+@include('web.partials.header')
 
 <div class="container-fluid" id="main_container">
     @yield('content')
 </div>
 
-@include('partials.footer')
+@include('web.partials.footer')
 </body>
 </html>
