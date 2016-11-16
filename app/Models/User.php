@@ -27,4 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class,'permissions');
+    }
+
 }

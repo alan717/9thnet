@@ -6,6 +6,9 @@ use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 
 class RegisterController extends Controller
 {
@@ -30,6 +33,16 @@ class RegisterController extends Controller
     protected $redirectTo = '/admin';
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Show the application registration form.
      *
      * @return \Illuminate\Http\Response
@@ -40,13 +53,28 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new controller instance.
+     * Handle a registration request for the application.
      *
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    public function register(Request $request)
     {
-        $this->middleware('guest');
+        $this->validator($request->all())->validate();
+
+        $this->guard()->login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 
     /**
@@ -59,7 +87,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:admins',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -72,7 +100,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
