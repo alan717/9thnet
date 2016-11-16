@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,11 +23,11 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/';
 
     /**
      * Create a new controller instance.
@@ -34,6 +36,44 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest:admin', ['except' => [
+            'logout',
+            'redirectToLogin',
+        ]]);
+    }
+
+    /**
+     * Get the guard to be used during authentication.  使用管理员认证
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    public function redirectToLogin()
+    {
+        if ($this->guard()->user()) {
+            return redirect('/admin/');
+        }
+
+        return redirect('/admin/login');
+    }
+
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/admin/login');
     }
 }

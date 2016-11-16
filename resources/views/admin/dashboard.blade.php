@@ -46,8 +46,10 @@
             <ul class="nav navbar-nav">
                 <li><a href="/admin" style="margin-left: 15px;margin-right: 69px;font-size: large">9thnet</a></li>
             </ul>
+            @if(auth('admin')->user())
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a href="#" data-toggle="dropdown" id="name">{{ auth()->user()->name }} <span
+                <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                        id="name">{{ auth('admin')->user()->name }} <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
@@ -57,7 +59,8 @@
                                 Logout
                             </a>
 
-                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST"
+                                  style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </li>
@@ -65,94 +68,95 @@
 
                 </li>
             </ul>
+            @endif
         </div>
-
     </div>
 </nav>
+@if(auth('admin')->user())
+    <div class="site-nav-left-wrap" id="site_nav_left_wrap">
 
-<div class="site-nav-left-wrap" id="site_nav_left_wrap">
-
-    <div style="height: 50px;"></div>
-    <div class="site-nav-left scrollable-container">
-        <div class="list-group">
-            <a href="/admin" class="list-group-item active"
-               data-toggle="tooltip"
-               data-placement="right"
-               title="仪表盘">
-                <i class="fa fa-dashboard"></i>
-                <span class="text">仪表盘</span>
-                <span class="glyphicon glyphicon-triangle-left"></span>
-            </a>
-        </div>
-
-        <div class="list-group">
-            <a href="javascript:void(0);"
-               class="list-group-item list-group-item-header collapsed"
-               data-toggle="collapse"
-               data-target="#report_sidebar_nav_collapse">
-                <span class="text">文章管理</span>
-                <i class="fa fa-caret-down" id="caret"></i>
-            </a>
-
-            <div class="list-group site-nav-left-container collapse collapsed"
-                 id="report_sidebar_nav_collapse">
-
-                <a href="/admin/posts" class="list-group-item member"
-                   data-pjax
+        <div style="height: 50px;"></div>
+        <div class="site-nav-left scrollable-container">
+            <div class="list-group">
+                <a href="/admin" class="list-group-item active"
                    data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">文章列表</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
-                <a href="/admin/posts/create" class="list-group-item member"
-                   data-pjax
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">新增文章</span>
+                   data-placement="right"
+                   title="仪表盘">
+                    <i class="fa fa-dashboard"></i>
+                    <span class="text">仪表盘</span>
                     <span class="glyphicon glyphicon-triangle-left"></span>
                 </a>
             </div>
-        </div>
 
-        <div class="list-group">
-            <a href="javascript:void(0);"
-               class="list-group-item list-group-item-header collapsed"
-               data-toggle="collapse"
-               data-target="#weibo_sidebar_nav_collapse">
-                <span class="text">权限管理</span>
-                <i class="fa fa-caret-down" id="caret"></i>
-            </a>
-
-            <div class="list-group site-nav-left-container collapse collapsed"
-                 id="weibo_sidebar_nav_collapse">
-
-                <a href="/admin/users" class="list-group-item weibo"
-                   data-pjax
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">管理员列表</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
+            <div class="list-group">
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-header collapsed"
+                   data-toggle="collapse"
+                   data-target="#report_sidebar_nav_collapse">
+                    <span class="text">文章管理</span>
+                    <i class="fa fa-caret-down" id="caret"></i>
                 </a>
-                <a href="/admin/users/create" class="list-group-item weibo"
-                   data-pjax
-                   data-toggle="tooltip"
-                   data-placement="right">
-                    <span class="text">新增管理员</span>
-                    <span class="glyphicon glyphicon-triangle-left"></span>
-                </a>
+
+                <div class="list-group site-nav-left-container collapse collapsed"
+                     id="report_sidebar_nav_collapse">
+
+                    <a href="/admin/posts" class="list-group-item member"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">文章列表</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                    <a href="/admin/posts/create" class="list-group-item member"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">新增文章</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="btn-toggle-site-nav-left text-center" id="btn_toggle_site_nav_left_wrap_style">
-            <span class="glyphicon glyphicon-arrow-left"></span>
-            <span class="glyphicon glyphicon-arrow-right"></span>
-        </div>
+            <div class="list-group">
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-header collapsed"
+                   data-toggle="collapse"
+                   data-target="#weibo_sidebar_nav_collapse">
+                    <span class="text">权限管理</span>
+                    <i class="fa fa-caret-down" id="caret"></i>
+                </a>
 
-        <div class="fix-push-up" style="height: 120px;"></div>
+                <div class="list-group site-nav-left-container collapse collapsed"
+                     id="weibo_sidebar_nav_collapse">
+
+                    <a href="/admin/users" class="list-group-item weibo"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">管理员列表</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                    <a href="/admin/users/create" class="list-group-item weibo"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">新增管理员</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="btn-toggle-site-nav-left text-center" id="btn_toggle_site_nav_left_wrap_style">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </div>
+
+            <div class="fix-push-up" style="height: 120px;"></div>
+        </div>
     </div>
-</div>
+@endif
 <div style="height: 50px;"></div>
-<div class="main" id="main_container">
+<div id="main_container" @if(auth('admin')->user())style="margin-left: 200px"@endif>
     @yield('content')
 </div>
 <script>

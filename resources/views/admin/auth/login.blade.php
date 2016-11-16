@@ -1,52 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>9th后台登录</title>
-
-    <!-- Bootstrap -->
-    <link href="/vendor/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/admin/app.css" rel="stylesheet">
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/vendor/js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/vendor/js/bootstrap.min.js"></script>
-    <script src="/vendor/js/jquery.validate.min.js"></script>
-    <script src="/vendor/js/messages_zh.min.js"></script>
-
-</head>
-<body>
-<nav class="nav navbar-default" id="app-navbar-collapse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapse" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">9thnet</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">登录</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+@extends('admin.dashboard')
+@section('content')
 <div class="container">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
         <h3 class="form-header page-header text-center">
             <span class="glyphicon glyphicon-user"></span> 用户登录
         </h3>
-        <form action="/login" method="post" class="form" id="login_form" novalidate>
+        <form action="/admin/login" method="post" class="form" id="login_form" novalidate>
             {{ csrf_field() }}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> email</label>
@@ -94,7 +53,7 @@
                 <button class="btn btn-primary btn-block">登 录</button>
             </div>
             <p>
-                <a href="/password/reset">忘记密码?</a>
+                <a href="/admin/password/reset">忘记密码?</a>
             </p>
         </form>
     </div>
@@ -127,5 +86,4 @@
         $('#login_form').validate(options);
     });
 </script>
-</body>
-</html>
+@endsection

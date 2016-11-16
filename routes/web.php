@@ -13,12 +13,9 @@
 
 Route::group([
     'namespace' => 'Web',
-], function () {
+], function ($route) {
 
-    Route::get('/', function () {
-        return view('web.index');
-    });
-
+    $route->get('/', 'HomeController@index');
     Route::resource('posts', 'PostController');
 });
 
@@ -40,10 +37,10 @@ Route::group([
 
     Auth::routes();
 
-    Route::get('/', 'HomeController@index');
-    Route::post('/upload', 'HomeController@upload');
-    Route::get('/users', 'HomeController@users');
-    Route::get('/users/create', 'HomeController@create');
+    Route::get('/', 'DashboardController@index');
+    Route::post('/upload', 'DashboardController@upload');
+    Route::get('/users', 'DashboardController@users');
+    Route::get('/users/create', 'DashboardController@create');
 
     Route::resource('/posts', 'PostController');
 });
