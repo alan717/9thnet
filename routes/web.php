@@ -14,18 +14,19 @@
 Route::group([
     'namespace' => 'Web',
 ], function ($route) {
-
     $route->get('/', 'HomeController@index');
     Route::resource('posts', 'PostController');
+    Auth::routes();
 });
 
 Route::get('/test', function () {
     $data = [
         'title' => '欢迎来到我的地带',
-        'name'  => '马佳荔晨',
-        'to'    => 'majialichen@163.com'
+        'name'  => '翟亮',
+        'to'    => 'horan@9thnet.com'
     ];
     \Mail::to($data['to'])->send(new \App\Mail\UserMailer($data));
+    echo '发送成功';
 });
 
 

@@ -11,6 +11,7 @@
 
     <link rel="icon" type="image/png" href="favicon.ico">
 
+    <link href="/css/web/app.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/vendor/css/bootstrap.min.css" rel="stylesheet">
     <link href="/vendor/css/jquery-ui.min.css" rel="stylesheet">
@@ -18,7 +19,6 @@
     <link href="/vendor/css/font-awesome.min.css" rel="stylesheet">
     <link href="/vendor/css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     <link href="/vendor/css/jquery.emoji.css" rel="stylesheet">
-    <link href="/css/front/app.css" rel="stylesheet">
     @yield('css')
 
     <script src="/vendor/js/jquery.min.js"></script>

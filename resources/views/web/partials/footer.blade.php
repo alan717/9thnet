@@ -1,14 +1,17 @@
-<footer id="footer">
+<footer class="footer" id="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <h2>第九网络组</h2>
                 <p class="footer__site-description">
                     <strong>本站使用以下多项技术集成：</strong>
-                <p><a target="_blank" href="http://nginx.org/">nginx</a>缓存+反向代理极大地优化高并发量</p>
-                <p><a target="_blank" href="http://redis.io/">Redis</a>非关系型数据库存储，极速的内存体验</p>
+                <p><a target="_blank" href="http://nginx.org/">nginx</a> 缓存+反向代理极大地优化高并发量</p>
                 <p><a
-                            target="_blank" href="https://www.elastic.co/">Elasticsearch</a>只有你想不到的，没有搜不到的
+                            target="_blank" href="https://www.elastic.co/">mysql</a> 读写分离，主从复制
+                </p>
+                <p><a target="_blank" href="http://redis.io/">Redis</a> 非关系型数据库存储，极速的内存</p>
+                <p><a
+                            target="_blank" href="https://www.elastic.co/">Elasticsearch</a> 搜索之王
                 </p>
             </div>
             <div class="col-md-1"></div>

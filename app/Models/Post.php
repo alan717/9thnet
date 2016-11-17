@@ -23,4 +23,9 @@ class Post extends Model
     protected $fillable = [
         'title', 'cover', 'content',
     ];
+
+    public function getLessContentAttribute()
+    {
+        return mb_substr($this->content,0,40,'utf8');
+    }
 }

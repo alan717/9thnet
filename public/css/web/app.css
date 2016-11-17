@@ -1,0 +1,17 @@
+.footer {
+    margin-top: 50px;
+    padding-top: 50px;
+}
+
+#main_container {
+    padding: 0 0 20px 0;
+}
+
+.dropdown-menu li .dropdown-inverse:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dropdown-menu li .dropdown-inverse {
+    color: #e3e3e3;
+}

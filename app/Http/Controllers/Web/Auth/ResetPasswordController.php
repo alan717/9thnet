@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -22,7 +22,7 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    public $redirectTo = '/admin/';
+    public $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,7 +45,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('admin.auth.passwords.reset')->with(
+        return view('web.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -57,6 +57,6 @@ class ResetPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('users');
     }
 }

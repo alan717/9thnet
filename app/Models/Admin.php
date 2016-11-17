@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\AdminResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -30,5 +31,15 @@ class Admin extends Authenticatable
     public function permissions()
     {
         return $this->belongsToMany(Permission::class,'admin_permissions');
+    }
+
+    /**
+     * 覆盖了Authenticatable里的trait CanResetPassword的方法
+     *
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPassword($token));
     }
 }
