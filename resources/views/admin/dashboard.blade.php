@@ -144,6 +144,13 @@
                         <span class="text">新增成员</span>
                         <span class="glyphicon glyphicon-triangle-left"></span>
                     </a>
+                    <a href="/admin/users/send-email" class="list-group-item"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">发送邮件</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
                 </div>
             </div>
 

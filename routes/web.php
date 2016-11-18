@@ -38,10 +38,12 @@ Route::group([
 
     Auth::routes();
 
-    Route::get('/', 'DashboardController@index');
-    Route::post('/upload', 'DashboardController@upload');
+    $route->get('/', 'DashboardController@index');
+    $route->post('/upload', 'DashboardController@upload');
+    $route->get('users/send-email', 'DashboardController@showEmailForm');
+    $route->get('users/email', 'DashboardController@showSendEmail');
+    $route->post('users/send-email', 'DashboardController@sendEmail');
     $route->resource('managers', 'ManagerController');
-    $route->resource('users','UserController');
-
-    Route::resource('posts', 'PostController');
+    $route->resource('users', 'UserController');
+    $route->resource('posts', 'PostController');
 });

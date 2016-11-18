@@ -14,6 +14,7 @@
     <div class="container">
         <div class="page-header">
             <h1>新增成员</h1>
+            <span class="text-muted">密码默认为：123456</span>
         </div>
         <form action="/admin/users" method="post" class="col-lg-4">
             {{ csrf_field() }}
@@ -35,17 +36,8 @@
                         </span>
                 @endif
             </div>
-            <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
-                <label for="password">成员密码</label>
-                <input type="text" id="password" name="password" class="form-control" value="{{ old('password') }}">
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                @endif
-            </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-lg" type="submit">新增</button>
+                <button class="btn btn-primary" type="submit">新增</button>
             </div>
         </form>
     </div>
