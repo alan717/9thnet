@@ -24,5 +24,9 @@ class AdminsTableSeeder extends Seeder
             'name' => 'postEditor',
             'description' => '文章管理员',
         ]);
+        $admin->permissions()->create([
+            'name' => 'userManager',
+            'description' => '成员管理员',
+        ]);
     }
 }

@@ -34,14 +34,14 @@ Route::group([
     'middleware' => ['pjax'],
     'prefix'     => 'admin',
     'namespace'  => 'Admin',
-], function () {
+], function ($route) {
 
     Auth::routes();
 
     Route::get('/', 'DashboardController@index');
     Route::post('/upload', 'DashboardController@upload');
-    Route::get('/users', 'DashboardController@users');
-    Route::get('/users/create', 'DashboardController@create');
+    $route->resource('managers', 'ManagerController');
+    $route->resource('users','UserController');
 
-    Route::resource('/posts', 'PostController');
+    Route::resource('posts', 'PostController');
 });

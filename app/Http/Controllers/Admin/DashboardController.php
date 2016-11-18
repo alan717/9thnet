@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,17 +31,6 @@ class DashboardController extends Controller
     public function index()
     {
         return view('admin.index');
-    }
-
-    public function users()
-    {
-        $users = User::all();
-        return view('admin.users.index', ['users' => $users]);
-    }
-
-    public function create()
-    {
-        return view('admin.users.create');
     }
 
     public function upload(Request $request)

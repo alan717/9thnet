@@ -79,6 +79,7 @@
         <div class="site-nav-left scrollable-container">
             <div class="list-group">
                 <a href="/admin" class="list-group-item active"
+                   data-pjax
                    data-toggle="tooltip"
                    data-placement="right"
                    title="仪表盘">
@@ -100,14 +101,14 @@
                 <div class="list-group site-nav-left-container collapse collapsed"
                      id="report_sidebar_nav_collapse">
 
-                    <a href="/admin/posts" class="list-group-item member"
+                    <a href="/admin/posts" class="list-group-item"
                        data-pjax
                        data-toggle="tooltip"
                        data-placement="right">
                         <span class="text">文章列表</span>
                         <span class="glyphicon glyphicon-triangle-left"></span>
                     </a>
-                    <a href="/admin/posts/create" class="list-group-item member"
+                    <a href="/admin/posts/create" class="list-group-item"
                        data-pjax
                        data-toggle="tooltip"
                        data-placement="right">
@@ -121,22 +122,51 @@
                 <a href="javascript:void(0);"
                    class="list-group-item list-group-item-header collapsed"
                    data-toggle="collapse"
-                   data-target="#weibo_sidebar_nav_collapse">
+                   data-target="#user_sidebar_nav_collapse">
+                    <span class="text">成员管理</span>
+                    <i class="fa fa-caret-down" id="caret"></i>
+                </a>
+
+                <div class="list-group site-nav-left-container collapse collapsed"
+                     id="user_sidebar_nav_collapse">
+
+                    <a href="/admin/users" class="list-group-item"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">成员列表</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                    <a href="/admin/users/create" class="list-group-item"
+                       data-pjax
+                       data-toggle="tooltip"
+                       data-placement="right">
+                        <span class="text">新增成员</span>
+                        <span class="glyphicon glyphicon-triangle-left"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="list-group">
+                <a href="javascript:void(0);"
+                   class="list-group-item list-group-item-header collapsed"
+                   data-toggle="collapse"
+                   data-target="#permission_sidebar_nav_collapse">
                     <span class="text">权限管理</span>
                     <i class="fa fa-caret-down" id="caret"></i>
                 </a>
 
                 <div class="list-group site-nav-left-container collapse collapsed"
-                     id="weibo_sidebar_nav_collapse">
+                     id="permission_sidebar_nav_collapse">
 
-                    <a href="/admin/users" class="list-group-item weibo"
+                    <a href="/admin/managers" class="list-group-item"
                        data-pjax
                        data-toggle="tooltip"
                        data-placement="right">
                         <span class="text">管理员列表</span>
                         <span class="glyphicon glyphicon-triangle-left"></span>
                     </a>
-                    <a href="/admin/users/create" class="list-group-item weibo"
+                    <a href="/admin/managers/create" class="list-group-item"
                        data-pjax
                        data-toggle="tooltip"
                        data-placement="right">

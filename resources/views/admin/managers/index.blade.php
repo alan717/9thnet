@@ -8,6 +8,7 @@
             <thead>
             <tr>
                 <th>名称</th>
+                <th>权限</th>
                 <th>用户名(邮箱)</th>
                 <th>创建时间</th>
                 <th>更新时间</th>
@@ -18,6 +19,11 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->name }}</td>
+                    <td>
+                    @foreach($user->permissions as $permission)
+                        {{ $permission->description }}
+                    @endforeach
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
