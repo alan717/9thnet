@@ -20,6 +20,7 @@
     @yield('css')
 
 
+    <script src="/vendor/js/packager.min.js"></script>
     <script src="/vendor/js/jquery.min.js"></script>
     <script src="/vendor/js/jquery.pjax.min.js"></script>
     <script src="/vendor/js/sweetalert.min.js"></script>
@@ -29,7 +30,12 @@
     <script src="/vendor/js/messages_zh.min.js"></script>
     <script src="/vendor/js/summernote.min.js"></script>
     <script src="/js/admin/app.js"></script>
-
+    <script src="/js/admin/table.js"></script>
+    <script>
+        $(function () {
+            app.init();
+        });
+    </script>
 </head>
 <body>
 <nav class="nav navbar-default navbar-fixed-top" role="navigation" style="padding:0 20px 0 0;">
@@ -47,27 +53,27 @@
                 <li><a href="/admin" style="margin-left: 15px;margin-right: 69px;font-size: large">9thnet</a></li>
             </ul>
             @if(auth('admin')->user())
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                        id="name">{{ auth('admin')->user()->name }} <span
-                                class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ url('/admin/logout') }}"
-                               onclick="event.preventDefault();
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                            id="name">{{ auth('admin')->user()->name }} <span
+                                    class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ url('/admin/logout') }}"
+                                   onclick="event.preventDefault();
                                                  document.getElementById ('logout-form').submit();">
-                                Logout
-                            </a>
+                                    Logout
+                                </a>
 
-                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
+                                <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
 
-                </li>
-            </ul>
+                    </li>
+                </ul>
             @endif
         </div>
     </div>

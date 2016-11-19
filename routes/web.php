@@ -22,7 +22,7 @@ Route::group([
 Route::get('/test', function () {
     $data = [
         'title' => '欢迎来到我的地带',
-        'name'  => '翟亮',
+        'name'  => '贺钧威',
         'to'    => 'horan@9thnet.com'
     ];
     \Mail::to($data['to'])->send(new \App\Mail\UserMailer($data));

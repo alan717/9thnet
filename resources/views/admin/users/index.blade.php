@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <h1>管理员权限管理</h1>
+            <h1>成员管理</h1>
         </div>
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -23,7 +23,8 @@
                     <td>{{ $user->updated_at }}</td>
                     <td class="text-center"><button class="btn btn-primary btn-xs">
                             <i class="fa fa-edit fa-fw"></i>编辑</button>
-                        <button class="btn btn-danger btn-xs">
+                        <button class="btn btn-danger btn-xs btn-delete"
+                                data-url="/admin/users/{{ $user->id }}">
                             <i class="fa fa-trash fa-fw"></i>删除</button>
                     </td>
                 </tr>
@@ -31,4 +32,10 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        $(function(){
+            app.components.table.init();
+        });
+    </script>
 @endsection

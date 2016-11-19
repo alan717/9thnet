@@ -27,9 +27,16 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
-                    <td class="text-center"><button class="btn btn-primary btn-xs">
+                    <td class="text-center"><button class="btn btn-primary btn-xs
+                    @if($loop->first)
+                                disabled
+                    @endif">
                             <i class="fa fa-edit fa-fw"></i>编辑</button>
-                        <button class="btn btn-danger btn-xs">
+                        <button class="btn btn-danger btn-xs btn-delete
+                    @if($loop->first)
+                                disabled
+                    @endif"
+                        data-url="/admin/managers/{{ $user->id }}">
                             <i class="fa fa-trash fa-fw"></i>删除</button>
                     </td>
                 </tr>
@@ -37,4 +44,9 @@
             </tbody>
         </table>
     </div>
+    <script>
+        $(function(){
+            app.components.table.init();
+        });
+    </script>
 @endsection
